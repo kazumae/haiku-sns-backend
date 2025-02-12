@@ -1,24 +1,24 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from .user import User
 
 
 class PostBase(BaseModel):
-    first_phrase: str
-    second_phrase: str
-    third_phrase: str
+    first_phrase: str = Field(..., min_length=1, max_length=50, description="五音")
+    second_phrase: str = Field(..., min_length=1, max_length=50, description="七音")
+    third_phrase: str = Field(..., min_length=1, max_length=50, description="五音")
+
+
+class Post(PostBase):
+    id: int
     full_text: str
     note: Optional[str] = None
     season: Optional[str] = None
     kigo: Optional[str] = None
     posted_at: datetime
-
-
-class Post(PostBase):
-    id: int
     created_at: datetime
     updated_at: datetime
     # 一時的に固定値を返す
