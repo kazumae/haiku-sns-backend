@@ -1,6 +1,7 @@
 import argparse
 
 from src.scripts.seeds.development.test_seeds import seed_tests
+from src.scripts.seeds.master.post_seeds import seed_posts
 from src.scripts.seeds.master.test_master_seeds import seed_test_masters
 
 
@@ -12,6 +13,7 @@ def run_development_seeds() -> None:
 def run_master_seeds() -> None:
     """マスターデータを投入"""
     seed_test_masters()
+    seed_posts()
 
 
 def main() -> None:
